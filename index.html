@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>奥特曼图鉴大全</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-star"></i> 奥特曼图鉴大全
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">首页</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#ultraman">奥特曼图鉴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#monster">怪兽图鉴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#comparison">角色对比</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#timeline">世界观时间轴</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#favorites">我的收藏</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav">
+                    <div class="nav-item me-3">
+                        <input type="text" class="form-control search-input" id="globalSearch" placeholder="搜索角色...">
+                    </div>
+                    <a class="nav-link" href="#" id="developerModeBtn">
+                        <i class="fas fa-cog"></i> 开发者模式
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区域 -->
+    <main class="main-content">
+        <!-- 首页 -->
+        <section id="home" class="section active">
+            <div class="hero-section">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <h1 class="hero-title">奥特曼图鉴大全</h1>
+                            <p class="hero-subtitle">探索奥特曼宇宙的无限可能</p>
+                            <div class="hero-buttons">
+                                <button class="btn btn-primary btn-lg me-3" onclick="showSection('ultraman')">
+                                    <i class="fas fa-user-astronaut"></i> 奥特曼图鉴
+                                </button>
+                                <button class="btn btn-outline-primary btn-lg" onclick="showSection('monster')">
+                                    <i class="fas fa-dragon"></i> 怪兽图鉴
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="hero-image">
+                                <div class="placeholder-hero">
+                                    <i class="fas fa-star fa-5x"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 奥特曼图鉴 -->
+        <section id="ultraman" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-user-astronaut"></i> 奥特曼图鉴</h2>
+                    <div class="filter-controls">
+                        <select class="form-select" id="ultramanSeriesFilter">
+                            <option value="">所有系列</option>
+                            <option value="showa">昭和系列</option>
+                            <option value="heisei">平成系列</option>
+                            <option value="reiwa">令和系列</option>
+                        </select>
+                        <select class="form-select" id="ultramanTypeFilter">
+                            <option value="">所有类型</option>
+                            <option value="light">光之国战士</option>
+                            <option value="human">人间体</option>
+                            <option value="fusion">融合奥特曼</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="ultramanGrid">
+                    <!-- 奥特曼卡片将在这里动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 怪兽图鉴 -->
+        <section id="monster" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-dragon"></i> 怪兽图鉴</h2>
+                    <div class="filter-controls">
+                        <select class="form-select" id="monsterTypeFilter">
+                            <option value="">所有类型</option>
+                            <option value="kaiju">宇宙怪兽</option>
+                            <option value="choju">超兽</option>
+                            <option value="alien">宇宙人</option>
+                            <option value="robot">机械怪兽</option>
+                        </select>
+                        <select class="form-select" id="monsterSeriesFilter">
+                            <option value="">所有作品</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row" id="monsterGrid">
+                    <!-- 怪兽卡片将在这里动态生成 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 角色对比 -->
+        <section id="comparison" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-balance-scale"></i> 角色对比</h2>
+                </div>
+                <div class="comparison-controls">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <select class="form-select" id="compareCharacter1">
+                                <option value="">选择角色1</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" id="compareCharacter2">
+                                <option value="">选择角色2</option>
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" id="compareCharacter3">
+                                <option value="">选择角色3（可选）</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div id="comparisonResult" class="comparison-result mt-4">
+                    <!-- 对比结果将在这里显示 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 世界观时间轴 -->
+        <section id="timeline" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-clock"></i> 奥特曼系列世界观时间轴</h2>
+                </div>
+                <div class="timeline-container">
+                    <div id="timelineChart">
+                        <!-- 时间轴将在这里生成 -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 我的收藏 -->
+        <section id="favorites" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2><i class="fas fa-heart"></i> 我的收藏</h2>
+                </div>
+                <div class="favorites-tabs">
+                    <ul class="nav nav-tabs" id="favoritesTabs">
+                        <li class="nav-item">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#favUltraman">
+                                奥特曼收藏
+                            </button>
+                        </li>
+                        <li class="nav-item">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#favMonster">
+                                怪兽收藏
+                            </button>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="favoritesTabContent">
+                        <div class="tab-pane fade show active" id="favUltraman">
+                            <div class="row" id="favoriteUltramanGrid">
+                                <!-- 收藏的奥特曼将在这里显示 -->
+                            </div>
+                        </div>
+                        <div class="tab-pane fade" id="favMonster">
+                            <div class="row" id="favoriteMonsterGrid">
+                                <!-- 收藏的怪兽将在这里显示 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- 角色详情模态框 -->
+    <div class="modal fade" id="characterModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="characterModalTitle"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="characterModalBody">
+                    <!-- 角色详细信息将在这里显示 -->
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" id="favoriteBtn">
+                        <i class="far fa-heart"></i> 收藏
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 开发者模式模态框 -->
+    <div class="modal fade" id="developerModal" tabindex="-1">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">开发者模式</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="developerContent">
+                        <!-- 开发者模式内容将在这里显示 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 搜索结果模态框 -->
+    <div class="modal fade" id="searchModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">搜索结果</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="searchResults">
+                    <!-- 搜索结果将在这里显示 -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 脚本文件 -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://unpkg.com/bmob-js-sdk@2.2.6/dist/Bmob.min.js"></script>
+    <script src="js/bmob-config.js"></script>
+    <script src="js/data-service.js"></script>
+    <script src="js/ui-components.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/comparison.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/developer.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
